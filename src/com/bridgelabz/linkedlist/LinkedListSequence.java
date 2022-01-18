@@ -11,7 +11,7 @@ public class LinkedListSequence {
 
         do {
             System.out.println("Choices for a simple linked list");
-            System.out.println("1.Insert First \n2.Insert Last \n3.Insert at Nth position \n4.Display LinkedList  \n5.Exit from the List \nEnter the Choices: ");
+            System.out.println("1.Insert First \n2.Insert Last \n3.Insert at Nth position \n4.Display LinkedList  \n5.pop \n6.pop last \n7. Exit \n Enter the Choices: ");
             choice = sc.nextInt();
 
             switch (choice) {
@@ -35,8 +35,11 @@ public class LinkedListSequence {
                 case 4:
                     linkedList.showLinkedList();
                     break;
+                case 5:
+                    linkedList.pop();
+                    break;
 
             }
-        } while (choice != 5);
+        } while (choice != 6);
     }
 }
