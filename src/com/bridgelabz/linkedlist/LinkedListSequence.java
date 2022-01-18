@@ -12,7 +12,7 @@ public class LinkedListSequence {
 
         do {
             System.out.println("Choices for a simple linked list");
-            System.out.println("1.Insert First \n2.Insert Last \n3.Insert at Nth position \n4.Display LinkedList  \n5.pop \n6.pop last \n7. Exit \n Enter the Choices: ");
+            System.out.println("1.Insert First \n2.Insert Last \n3.Insert at Nth position \n4.Display LinkedList  \n5.pop \n6.pop last \n7.Search Node \n8.Exit \nEnter the Choices: ");
             choice = sc.nextInt();
 
             switch (choice) {
@@ -42,8 +42,12 @@ public class LinkedListSequence {
                 case 6:
                     linkedList.popLast();
                     break;
+                case 7:
+                    System.out.println("Enter the Data to Search in the Linked List sequence: ");
+                    linkedList.searchNode(sc.nextInt());
+                    break;
             }
         }
-        while (choice != 7);
+        while (choice != 8);
     }
 }
