@@ -1,10 +1,10 @@
 package com.bridgelabz.linkedlist;
 
-/* UC8- Ability to insert 40 after 30 to the Linked List sequence of 56->30->70
-  - Write Junit Test Case as demonstrated in class
-  - Search LinkedList to get Node with key value 30
-  - Then Insert 40 to 30
-  - Final Sequence: 56->30->40->70 */
+/* UC9- Ability to delete 40 from the Linked List sequence of 56->30->40->70 and show the size of LinkedList is 3
+        - Search LinkedList to find node with key value 40
+        - Delete the node
+        - Implement size() and show the Linked List size is 3
+        - Final Sequence: 56->30->70 */
 
 class Node {
     public int data;
@@ -21,11 +21,12 @@ class LinkedList {
     Node head;
     Node tail;
     int location = 0;
+
     // now inserting data in new Node from first node
     public void insertFirst(int data) {
         Node newNode = new Node(data);
         //Adding Data in Node
-        if(head == null) {
+        if (head == null) {
             head = newNode;
             tail = newNode;
         } else {
@@ -33,13 +34,13 @@ class LinkedList {
             head = newNode;
         }
         location++;
-        System.out.println("Location:"+location);
+        System.out.println("Location:" + location);
     }
 
     // data insertion from last node
     public void insertLast(int data) {
         Node newNode = new Node(data);
-        if(tail == null) {
+        if (tail == null) {
             head = newNode;
             tail = newNode;
         } else {
@@ -47,13 +48,13 @@ class LinkedList {
             tail = newNode;
         }
         location++;
-        System.out.println("Location:"+location);
+        System.out.println("Location:" + location);
     }
 
     // insert a new Node after(betn) given Node at nth position
-    public void insertNthPosition(int data,int nthdata) {
+    public void insertNthPosition(int data, int nthdata) {
         Node newNode = new Node(data);
-        if(head == null) {
+        if (head == null) {
             head = newNode;
             tail = newNode;
         } else {
@@ -61,7 +62,7 @@ class LinkedList {
             Node nextNode;
             while (temp != null) {
                 nextNode = temp.next;
-                if(temp.data == nthdata) {
+                if (temp.data == nthdata) {
                     temp.next = newNode;
                     newNode.next = nextNode;
                 }
@@ -72,7 +73,7 @@ class LinkedList {
 
     // displaying Node in Linked List
     public void showLinkedList() {
-        if(head == null) {
+        if (head == null) {
             System.out.println("Linked List Sequence is Empty");
         } else {
             Node temp = head;
@@ -85,19 +86,20 @@ class LinkedList {
 
     //delete First Node from Linked List sequence
     public void pop() {
-        if(head == null) {
+        if (head == null) {
             System.out.println("Linked List sequence is Empty");
         } else {
             head = head.next;
         }
     }
+
     // to delete Last Node from Linked List sequence
     public void popLast() {
-        if(head == null) {
+        if (head == null) {
             System.out.println("Linked List sequence is Empty");
         } else {
             Node second_Last = head;
-            while(second_Last.next.next != null)
+            while (second_Last.next.next != null)
                 second_Last = second_Last.next;
             second_Last.next = null;
         }
@@ -107,24 +109,25 @@ class LinkedList {
     public void searchNode(int data) {
         int nodelocationfound = 1;
 
-        if(head == null) {
+        if (head == null) {
             System.out.println("Linked List is Empty");
         } else {
 
             Node temp = head;
-            while(temp != null) {
-                if(temp.data == data) {
-                    System.out.println("Node found at Location : "+nodelocationfound);
+            while (temp != null) {
+                if (temp.data == data) {
+                    System.out.println("Node found at Location : " + nodelocationfound);
                 }
                 nodelocationfound++;
                 temp = temp.next;
             }
         }
     }
+
     // insert a given Node at a particular Location
-    public void insertAtLocation(int data,int nthdata) {
+    public void insertAtLocation(int data, int nthdata) {
         Node newNode = new Node(data);
-        if(head == null) {
+        if (head == null) {
             head = newNode;
             tail = newNode;
         } else {
@@ -132,11 +135,32 @@ class LinkedList {
             Node nextNode;
             while (temp != null) {
                 nextNode = temp.next;
-                if(temp.data == nthdata) {
+                if (temp.data == nthdata) {
                     temp.next = newNode;
                     newNode.next = nextNode;
                 }
                 temp = temp.next;
+            }
+        }
+    }
+
+    // Deleting a given Node from Linked List
+    public void deleteNode(int data) {
+        if (head == null) {
+            System.out.println("Linked List is Empty");
+        } else {
+            if (data == head.data) {
+                head = head.next;
+            } else {
+                Node prevNode = head;
+                Node temp = head.next;
+                while (prevNode != null) {
+                    if (temp.data == data) {
+                        prevNode.next = temp.next;
+                    }
+                    prevNode = prevNode.next;
+                    temp = temp.next;
+                }
             }
         }
     }
