@@ -1,8 +1,9 @@
 package com.bridgelabz.linkedlist;
 
-/* UC5-Ability to delete the first element in the LinkedList of sequence 56->30->70 - Write pop method
-        - Note there is new head
-        - Final Sequence: 30->70 */
+/* UC6- Ability to delete the last element in the LinkedList of sequence 56->30->70
+        - Write popLast method
+        - Note there is new tail
+        - Final Sequence: 56->30 */
 
 class Node {
     public int data;
@@ -87,6 +88,17 @@ class LinkedList {
             System.out.println("Linked List sequence is Empty");
         } else {
             head = head.next;
+        }
+    }
+    // to delete Last Node from Linked List sequence
+    public void popLast() {
+        if(head == null) {
+            System.out.println("Linked List sequence is Empty");
+        } else {
+            Node second_Last = head;
+            while(second_Last.next.next != null)
+                second_Last = second_Last.next;
+            second_Last.next = null;
         }
     }
 }
